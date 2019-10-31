@@ -1,0 +1,26 @@
+{
+  "output_file": "config.json",
+
+  "liveOnly": {
+      "type": "checkbox",
+      "value": false,
+      "label": "Live Only Mode",
+      "tooltip": "True if you want it to only run when you are live",
+      "group" : "General"
+  },
+  "emote": {
+      "type": "textbox",
+      "value": "cryptCalcium",
+      "label": "Emote to track",
+      "tooltip": "This is the name of the emote to track.",
+      "group": "General"
+  },
+  "openReadMe": {
+      "type": "button",
+      "label": "Open 'Readme Me' file",
+      "tooltip": "Opens the 'Readme.txt' for this script.",
+      "function": "OpenReadMe",
+      "wsevent": "",
+      "group": ""
+  }
+}
