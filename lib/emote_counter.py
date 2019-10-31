@@ -4,6 +4,7 @@ import json
 import os
 import sys
 import datetime
+import re
 
 
 class EmoteCounter(object):
@@ -18,14 +19,20 @@ class EmoteCounter(object):
 
     def __init__(self):
         self.base_path = os.path.dirname(__file__)
+        self.data_path = os.path.join(self.base_path, '..', 'data')
         self.settings = {}
         self.parent = None
         self.current_date = datetime.date.today()
-        self.file_name =  '{}.txt'.format(self.current_date.isoformat())
+        self.file_name = os.path.join(self.data_path, '{}.txt'.format(self.current_date.isoformat()))
         self.current_count = 0
         self.init_count_file()
     
     def init_count_file(self):
+        try:
+            os.makedirs(self.data_path)
+        except Exception:
+            pass
+
         try:
             with open(self.file_name, 'r') as c:
                 content = c.read()
@@ -67,8 +74,8 @@ class EmoteCounter(object):
         """
         # If it's from chat and the live setting correspond to the live status
         if self.canParseData(data):
-            count = len(re.findall(t, data.message))
-            if counter:
+            count = len(re.findall(self.pattern, data.Message))
+            if count:
                 self.add_count(count)
         return
     
@@ -87,7 +94,7 @@ class EmoteCounter(object):
 
     def write_count(self):
         with open(self.file_name, 'w') as c:
-            c.write(self.current_count)
+            c.write(str(self.current_count))
 
     def tick(self):
         if datetime.date.today() != self.current_date:
