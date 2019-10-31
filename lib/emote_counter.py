@@ -99,6 +99,8 @@ class EmoteCounter(object):
     def tick(self):
         if datetime.date.today() != self.current_date:
             self.write_count()
+            self.current_date = datetime.date.today()
+            self.file_name = os.path.join(self.data_path, '{}.txt'.format(self.current_date.isoformat()))
             self.init_count_file()
         return
     
