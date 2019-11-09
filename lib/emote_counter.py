@@ -15,7 +15,7 @@ class EmoteCounter(object):
     script_name = "Emote counter"
     config_file = "config.json"
     application_name = 'Frog Tips TTS reader'
-    version = '1.0.1'
+    version = '1.1.0'
 
     def __init__(self):
         self.base_path = os.path.dirname(__file__)
