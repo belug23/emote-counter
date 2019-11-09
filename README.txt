@@ -19,3 +19,16 @@ Download the lastest stable release ZIP from https://github.com/belug23/FrogTTST
 Open the script section of the chatbot and use the import command to import the ZIP you downloaded.
 
 Change the settings, save then reload scripts.
+
+===
+String placeholders
+===
+
+This script support some placeholders in the strings here's the list
+
+ - {user} = Viewer's username
+ - {command} = The command used
+ - {cd} = The cool down time left
+ - {current} = today's counter
+ - {yesterday} = Yesterday's counter
+ - {max} = Max recorded counter
